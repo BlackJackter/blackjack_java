@@ -60,6 +60,10 @@ public class SimpleView implements IView
         System.out.println("");
     }
 
+    public void DisplayPause() {
+
+    }
+
     public void DisplayGameOver(boolean a_dealerIsWinner)
     {
         System.out.println("GameOver: ");
