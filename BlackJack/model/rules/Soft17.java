@@ -9,8 +9,8 @@ public class Soft17 implements IHitStrategy {
     @Override
     public boolean DoHit(Player a_dealer) {
 
-        if (a_dealer.CalcScore() > g_hitLimit) {
-            return false; // Score is 18 or higher, CANT TAKE CARD
+        if (a_dealer.CalcScore() < g_hitLimit) {
+            return true; // Score is 18 or higher, CANT TAKE CARD
 
         } else if (a_dealer.CalcScore() == g_hitLimit) { // Score is 17! Take one card if you posses an ace
             int aceCounter = 0;
@@ -20,7 +20,7 @@ public class Soft17 implements IHitStrategy {
                 if (card.GetValue() == Card.Value.Ace) aceCounter++;
             }
 
-            if (aceCounter > 0) return true; // You found an ace! Take one card!
+            if (aceCounter > 0) return false; // You found an ace! Take one card!
         }
         return false;
     }

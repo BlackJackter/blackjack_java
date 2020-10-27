@@ -34,14 +34,21 @@ public class Dealer extends Player {
 
   public boolean Hit(Player a_player) {
     if (m_deck != null && a_player.CalcScore() < g_maxScore && !IsGameOver()) {
-      Card c;
-      c = m_deck.GetCard();
-      c.Show(true);
-      a_player.DealCard(c);
-
+      RefactorHit(a_player);
       return true;
     }
     return false;
+  }
+
+  public void RefactorHit(Player a_player) {
+    Card c;
+    c = m_deck.GetCard();
+    c.Show(true);
+    if (a_player == null) { // Dealer card
+      DealCard(c);
+    } else { // Player card
+      a_player.DealCard(c);
+    }
   }
 
   public boolean IsDealerWinner(Player a_player) {
@@ -56,15 +63,11 @@ public class Dealer extends Player {
   }
 
   public boolean Stand() {
-    Card c;
-
     if (m_deck != null) {
       ShowHand();
 
       while (m_hitRule.DoHit(this)) {
-        c = this.m_deck.GetCard();
-        c.Show(true);
-        DealCard(c);
+        RefactorHit(null);
       }
     }
     return true;
