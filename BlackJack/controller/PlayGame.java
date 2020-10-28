@@ -33,9 +33,16 @@ public class PlayGame implements Subject{
     return input != IView.InputMenu.q;
   }
 
+
+
   @Override
   public void Attach(Observer observer) {
     observerArrayList.add(observer);
+  }
+
+  @Override
+  public void Deattach(Observer observer) {
+    observerArrayList.remove(observer);
   }
 
   @Override
@@ -43,10 +50,5 @@ public class PlayGame implements Subject{
     for (Observer observer : observerArrayList) {
       observer.Update(message);
     }
-  }
-
-  @Override
-  public void Deattach(Observer observer) {
-    observerArrayList.remove(observer);
   }
 }
