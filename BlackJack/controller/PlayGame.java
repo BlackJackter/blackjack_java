@@ -29,8 +29,9 @@ public class PlayGame implements Observer{
     return input != IView.InputMenu.q;
   }
 
+
   @Override
-  public void update() {
+  public void update(Object o) {
 
   }
 }
