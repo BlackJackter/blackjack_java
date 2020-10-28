@@ -3,7 +3,11 @@ package BlackJack.controller;
 import BlackJack.view.IView;
 import BlackJack.model.Game;
 
-public class PlayGame implements Observer{
+import java.util.ArrayList;
+import java.util.List;
+
+public class PlayGame implements Subject{
+  List<Observer> observerArrayList = new ArrayList<>();
 
   public boolean Play(Game a_game, IView a_view) {
     a_view.DisplayWelcomeMessage();
@@ -30,7 +34,19 @@ public class PlayGame implements Observer{
   }
 
   @Override
-  public void update() {
+  public void Attach(Observer observer) {
+    observerArrayList.add(observer);
+  }
 
+  @Override
+  public void Notify(String message) {
+    for (Observer observer : observerArrayList) {
+      observer.Update(message);
+    }
+  }
+
+  @Override
+  public void Deattach(Observer observer) {
+    observerArrayList.remove(observer);
   }
 }

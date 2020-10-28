@@ -1,7 +1,8 @@
 package BlackJack.view;
 
-public interface IView
-{
+import BlackJack.controller.Observer;
+
+public interface IView extends Observer {
   enum InputMenu {
     p,h,s,q,invalid
   }

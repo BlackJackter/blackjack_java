@@ -1,5 +1,7 @@
 package BlackJack.view;
 
+import BlackJack.controller.Subject;
+
 public class SimpleView implements IView
 {
 
@@ -76,5 +78,16 @@ public class SimpleView implements IView
             System.out.println("You Won!");
         }
 
+    }
+
+    @Override
+    public void Update(String message) {
+        try {
+            System.out.println(message);
+            System.out.println("*pause*");
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

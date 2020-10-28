@@ -1,5 +1,7 @@
 package BlackJack.view;
 
+import BlackJack.controller.Subject;
+
 public class SwedishView implements IView
 {
     public void DisplayWelcomeMessage()
@@ -81,5 +83,16 @@ public class SwedishView implements IView
         }
         System.out.println("Poäng: " + a_score);
         System.out.println("");
+    }
+
+    @Override
+    public void Update(String message) {
+        try {
+            System.out.println(message);
+            System.out.println("*pause*");
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -1,5 +1,5 @@
 package BlackJack.controller;
 
 public interface Observer {
-    void update(Object o);
+    void Update(String message);
 }

@@ -1,9 +1,12 @@
 package BlackJack.model;
 
+import BlackJack.controller.Observer;
+import BlackJack.controller.Subject;
+
 import java.util.List;
 import java.util.LinkedList;
 
-public class Player {
+public class Player implements Subject {
 
   private List<Card> m_hand;
   protected final int g_maxScore = 21;
@@ -71,4 +74,19 @@ public class Player {
 
     return score;
   }
+
+    @Override
+    public void Attach(Observer observer) {
+
+    }
+
+    @Override
+    public void Notify(String message) {
+
+    }
+
+    @Override
+    public void Deattach(Observer observer) {
+
+    }
 }
