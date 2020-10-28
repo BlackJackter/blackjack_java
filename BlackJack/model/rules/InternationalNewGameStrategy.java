@@ -35,7 +35,7 @@ class InternationalNewGameStrategy implements INewGameStrategy {
   }
 
   private String card(Card c) {
-    return c.GetValue().toString() + " " + c.GetColor().toString();
+    return c.GetColor().toString() + " of " + c.GetColor().toString();
   }
 
   @Override
