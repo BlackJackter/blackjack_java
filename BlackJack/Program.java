@@ -17,5 +17,7 @@ public class Program
     ctrl.Attach(v);
     
     while (ctrl.Play(g, v));
+
+    ctrl.Deattach(v);
   }
 }

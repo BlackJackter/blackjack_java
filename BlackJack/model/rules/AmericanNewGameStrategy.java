@@ -43,7 +43,7 @@ class AmericanNewGameStrategy implements INewGameStrategy {
     return true;
   }
 
-  private String card(Card c) {
+  public String card(Card c) {
     return c.GetValue().toString() + " of " + c.GetColor().toString();
   }
 

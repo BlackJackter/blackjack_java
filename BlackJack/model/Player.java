@@ -3,10 +3,12 @@ package BlackJack.model;
 import BlackJack.controller.Observer;
 import BlackJack.controller.Subject;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.LinkedList;
 
 public class Player implements Subject {
+  List<Observer> observerList = new ArrayList<>();
 
   private List<Card> m_hand;
   protected final int g_maxScore = 21;
@@ -75,18 +77,20 @@ public class Player implements Subject {
     return score;
   }
 
-    @Override
-    public void Attach(Observer observer) {
+  @Override
+  public void Attach(Observer observer) {
+    observerList.add(observer);
+  }
 
+  @Override
+  public void Deattach(Observer observer) {
+    observerList.remove(observer);
+  }
+
+  @Override
+  public void Notify(String message) {
+    for (Observer observer : observerList) {
+      observer.Update(message);
     }
-
-    @Override
-    public void Notify(String message) {
-
-    }
-
-    @Override
-    public void Deattach(Observer observer) {
-
-    }
+  }
 }

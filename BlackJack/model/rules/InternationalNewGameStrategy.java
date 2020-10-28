@@ -19,23 +19,23 @@ class InternationalNewGameStrategy implements INewGameStrategy {
     Card c1 = a_deck.GetCard();
     c1.Show(true);
     a_player.DealCard(c1);
-    Notify("Player: " + card(c1));
+    Notify("Spelare: " + card(c1) + "\nCroupier: ");
 
     Card c2 = a_deck.GetCard();
     c2.Show(true);
     a_dealer.DealCard(c2);
-    Notify("Player: " + card(c1) + "\nDealer: " + card(c2));
+    Notify("Spelare: " + card(c1) + "\nCroupier: " + card(c2));
 
     Card c3 = a_deck.GetCard();
     c3.Show(true);
     a_player.DealCard(c3);
-    Notify("Player: " + card(c1) + ", " + card(c3) + "\nDealer: " + card(c2));
+    Notify("Spelare: " + card(c1) + ", " + card(c3) + "\nCroupier: " + card(c2));
   
     return true;
   }
 
   private String card(Card c) {
-    return c.GetValue().toString() + " of " + c.GetColor().toString();
+    return c.GetValue().toString() + " " + c.GetColor().toString();
   }
 
   @Override

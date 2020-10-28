@@ -89,7 +89,7 @@ public class SwedishView implements IView
     public void Update(String message) {
         try {
             System.out.println(message);
-            System.out.println("*pause*");
+            System.out.println("*paus*");
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();

@@ -1,5 +1,6 @@
 package BlackJack.controller;
 
+import BlackJack.model.Card;
 import BlackJack.view.IView;
 import BlackJack.model.Game;
 
@@ -7,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PlayGame implements Subject{
-  List<Observer> observerArrayList = new ArrayList<>();
+  List<Observer> observerList = new ArrayList<>();
 
   public boolean Play(Game a_game, IView a_view) {
     a_view.DisplayWelcomeMessage();
@@ -27,6 +28,12 @@ public class PlayGame implements Subject{
     } else if (input == IView.InputMenu.h) {
       a_game.Hit();
     } else if (input == IView.InputMenu.s) {
+      Card card = null;
+      for(Card c : a_game.GetDealerHand()) {
+        card = c;
+      }
+      card.Show(true);
+      Notify("Dealer hidden card: " + card.GetValue().toString() + " of " + card.GetColor().toString());
       a_game.Stand();
     }
 
@@ -37,17 +44,17 @@ public class PlayGame implements Subject{
 
   @Override
   public void Attach(Observer observer) {
-    observerArrayList.add(observer);
+    observerList.add(observer);
   }
 
   @Override
   public void Deattach(Observer observer) {
-    observerArrayList.remove(observer);
+    observerList.remove(observer);
   }
 
   @Override
   public void Notify(String message) {
-    for (Observer observer : observerArrayList) {
+    for (Observer observer : observerList) {
       observer.Update(message);
     }
   }
